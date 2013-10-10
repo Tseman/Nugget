@@ -19,6 +19,7 @@
 		429AE6B91806548B00801014 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429AE6A11806548B00801014 /* UIKit.framework */; };
 		429AE6C11806548B00801014 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 429AE6BF1806548B00801014 /* InfoPlist.strings */; };
 		429AE6C31806548B00801014 /* NuggetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE6C21806548B00801014 /* NuggetTests.m */; };
+		429AE77F1807433400801014 /* NuggetStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		429AE6BE1806548B00801014 /* NuggetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NuggetTests-Info.plist"; sourceTree = "<group>"; };
 		429AE6C01806548B00801014 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		429AE6C21806548B00801014 /* NuggetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NuggetTests.m; sourceTree = "<group>"; };
+		429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NuggetStoryBoard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		429AE6911806548B00801014 = {
 			isa = PBXGroup;
 			children = (
+				429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */,
 				429AE6A31806548B00801014 /* Nugget */,
 				429AE6BC1806548B00801014 /* NuggetTests */,
 				429AE69C1806548B00801014 /* Frameworks */,
@@ -221,6 +224,7 @@
 			files = (
 				429AE6A81806548B00801014 /* InfoPlist.strings in Resources */,
 				429AE6B01806548B00801014 /* Images.xcassets in Resources */,
+				429AE77F1807433400801014 /* NuggetStoryBoard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
