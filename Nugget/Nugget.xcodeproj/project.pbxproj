@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42425A221807783D0053F6EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42425A211807783D0053F6EB /* QuartzCore.framework */; };
 		429AE69E1806548B00801014 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429AE69D1806548B00801014 /* Foundation.framework */; };
 		429AE6A01806548B00801014 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429AE69F1806548B00801014 /* CoreGraphics.framework */; };
 		429AE6A21806548B00801014 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429AE6A11806548B00801014 /* UIKit.framework */; };
@@ -20,6 +21,8 @@
 		429AE6C11806548B00801014 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 429AE6BF1806548B00801014 /* InfoPlist.strings */; };
 		429AE6C31806548B00801014 /* NuggetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE6C21806548B00801014 /* NuggetTests.m */; };
 		429AE77F1807433400801014 /* NuggetStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */; };
+		429AE78418075E6600801014 /* PickerVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE78118075E6600801014 /* PickerVIew.m */; };
+		429AE78518075E6600801014 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE78318075E6600801014 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42425A211807783D0053F6EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		429AE69A1806548B00801014 /* Nugget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nugget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		429AE69D1806548B00801014 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		429AE69F1806548B00801014 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -50,6 +54,10 @@
 		429AE6C01806548B00801014 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		429AE6C21806548B00801014 /* NuggetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NuggetTests.m; sourceTree = "<group>"; };
 		429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NuggetStoryBoard.storyboard; sourceTree = "<group>"; };
+		429AE78018075E6600801014 /* PickerVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickerVIew.h; path = ../../../../Downloads/PickerView/PickerView/PickerVIew.h; sourceTree = "<group>"; };
+		429AE78118075E6600801014 /* PickerVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerVIew.m; path = ../../../../Downloads/PickerView/PickerView/PickerVIew.m; sourceTree = "<group>"; };
+		429AE78218075E6600801014 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../../../Downloads/PickerView/PickerView/ViewController.h; sourceTree = "<group>"; };
+		429AE78318075E6600801014 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../../../Downloads/PickerView/PickerView/ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42425A221807783D0053F6EB /* QuartzCore.framework in Frameworks */,
 				429AE6A01806548B00801014 /* CoreGraphics.framework in Frameworks */,
 				429AE6A21806548B00801014 /* UIKit.framework in Frameworks */,
 				429AE69E1806548B00801014 /* Foundation.framework in Frameworks */,
@@ -99,6 +108,7 @@
 		429AE69C1806548B00801014 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42425A211807783D0053F6EB /* QuartzCore.framework */,
 				429AE69D1806548B00801014 /* Foundation.framework */,
 				429AE69F1806548B00801014 /* CoreGraphics.framework */,
 				429AE6A11806548B00801014 /* UIKit.framework */,
@@ -110,6 +120,10 @@
 		429AE6A31806548B00801014 /* Nugget */ = {
 			isa = PBXGroup;
 			children = (
+				429AE78018075E6600801014 /* PickerVIew.h */,
+				429AE78118075E6600801014 /* PickerVIew.m */,
+				429AE78218075E6600801014 /* ViewController.h */,
+				429AE78318075E6600801014 /* ViewController.m */,
 				429AE6AC1806548B00801014 /* AppDelegate.h */,
 				429AE6AD1806548B00801014 /* AppDelegate.m */,
 				429AE6AF1806548B00801014 /* Images.xcassets */,
@@ -244,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				429AE6AE1806548B00801014 /* AppDelegate.m in Sources */,
+				429AE78418075E6600801014 /* PickerVIew.m in Sources */,
+				429AE78518075E6600801014 /* ViewController.m in Sources */,
 				429AE6AA1806548B00801014 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,6 +463,7 @@
 				429AE6C81806548B00801014 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		429AE6C91806548B00801014 /* Build configuration list for PBXNativeTarget "NuggetTests" */ = {
 			isa = XCConfigurationList;
@@ -455,6 +472,7 @@
 				429AE6CB1806548B00801014 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
