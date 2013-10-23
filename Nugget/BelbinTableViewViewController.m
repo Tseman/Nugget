@@ -32,6 +32,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
     belbinroles = [[NSMutableArray alloc] init];
     [belbinroles addObject:@"Plant"];
     [belbinroles addObject:@"Resource Investigator"];
@@ -65,6 +66,9 @@
 	}
 }
 
+- (BOOL)tableView:(UITableView *)tableview shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -128,20 +132,19 @@
 }
 */
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return UITableViewCellEditingStyleNone;
+}
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
- NSObject *item = [belbinroles objectAtIndex:fromIndexPath.row];
+
     
-    
-    if(toIndexPath.row > fromIndexPath.row) //moving a row down
-        for(int x = toIndexPath.row; x > fromIndexPath.row; x--)
-            [belbinroles replaceObjectAtIndex:x-1 withObject:[belbinroles objectAtIndex:x]];
-    else //moving a row up
-        for(int x = toIndexPath.row; x < fromIndexPath.row; x++)
-            [belbinroles replaceObjectAtIndex:x+1 withObject:[belbinroles objectAtIndex:x]];
-    
-    [belbinroles replaceObjectAtIndex:toIndexPath.row withObject:item];
+    NSObject *item = [belbinroles objectAtIndex:fromIndexPath.row];
+	[belbinroles removeObject:item];
+	[belbinroles insertObject:item atIndex:toIndexPath.row];
+
+
 
 }
 
