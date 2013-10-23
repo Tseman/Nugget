@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -41,7 +40,31 @@
     [belbinroles addObject:@"Monitor"];
     [belbinroles addObject:@"Team Worker"];
     [belbinroles addObject:@"Implementor"];
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
+	[self.navigationItem setLeftBarButtonItem:addButton];
+    [super viewDidLoad];
 }
+
+- (IBAction) EditTable:(id)sender{
+	if(self.editing)
+	{
+		[super setEditing:NO animated:NO];
+		[tblSimpleTable setEditing:NO animated:NO];
+		[tblSimpleTable reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+	}
+	else
+	{
+		[super setEditing:YES animated:YES];
+		[tblSimpleTable setEditing:YES animated:YES];
+		[tblSimpleTable reloadData];
+		[self.navigationItem.leftBarButtonItem setTitle:@"Done"];
+		[self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+	}
+}
+
 
 
 - (void)didReceiveMemoryWarning
@@ -66,24 +89,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BelbinCell";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    if (cell ==nil){
+        cell = [[UITableViewCell alloc ]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+
+    
+	cell.textLabel.text = [belbinroles objectAtIndex:indexPath.row];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    return cell;
+    
     
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
 /*
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -97,21 +129,30 @@
 }
 */
 
-/*
-// Override to support rearranging the table view.
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-}
-*/
+ NSObject *item = [belbinroles objectAtIndex:fromIndexPath.row];
+    
+    
+    if(toIndexPath.row > fromIndexPath.row) //moving a row down
+        for(int x = toIndexPath.row; x > fromIndexPath.row; x--)
+            [belbinroles replaceObjectAtIndex:x-1 withObject:[belbinroles objectAtIndex:x]];
+    else //moving a row up
+        for(int x = toIndexPath.row; x < fromIndexPath.row; x++)
+            [belbinroles replaceObjectAtIndex:x+1 withObject:[belbinroles objectAtIndex:x]];
+    
+    [belbinroles replaceObjectAtIndex:toIndexPath.row withObject:item];
 
-/*
-// Override to support conditional rearranging of the table view.
+}
+
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 /*
 #pragma mark - Navigation

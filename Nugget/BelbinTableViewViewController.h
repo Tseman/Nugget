@@ -10,7 +10,9 @@
 
 @interface BelbinTableViewViewController : UITableViewController {
     NSMutableArray *belbinroles;
-    
+    IBOutlet UITableView *tblSimpleTable;
+
 }
+- (IBAction) EditTable:(id)sender;
 
 @end
