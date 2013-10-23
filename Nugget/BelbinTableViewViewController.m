@@ -42,7 +42,7 @@
     [belbinroles addObject:@"Implementor"];
     
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
-	[self.navigationItem setLeftBarButtonItem:addButton];
+	[self.navigationItem setRightBarButtonItem:addButton];
     [super viewDidLoad];
 }
 
@@ -89,7 +89,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"BCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
@@ -99,7 +99,6 @@
 
     
 	cell.textLabel.text = [belbinroles objectAtIndex:indexPath.row];
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
     
     
