@@ -108,7 +108,7 @@
 		429AE6911806548B00801014 = {
 			isa = PBXGroup;
 			children = (
-				429AE6A31806548B00801014 /* Nugget */,
+				429AE6A31806548B00801014 /* NuggetUI */,
 				429AE6BC1806548B00801014 /* NuggetTests */,
 				429AE69C1806548B00801014 /* Frameworks */,
 				429AE69B1806548B00801014 /* Products */,
@@ -136,7 +136,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		429AE6A31806548B00801014 /* Nugget */ = {
+		429AE6A31806548B00801014 /* NuggetUI */ = {
 			isa = PBXGroup;
 			children = (
 				429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */,
@@ -162,6 +162,7 @@
 				429AE6AF1806548B00801014 /* Images.xcassets */,
 				429AE6A41806548B00801014 /* Supporting Files */,
 			);
+			name = NuggetUI;
 			path = Nugget;
 			sourceTree = "<group>";
 		};

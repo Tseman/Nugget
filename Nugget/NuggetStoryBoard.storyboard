@@ -210,11 +210,13 @@
                             <outlet property="delegate" destination="OUg-23-Bqp" id="lom-UX-jtV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MBl-ZW-cDh"/>
+                    <navigationItem key="navigationItem" id="MBl-ZW-cDh">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="NVX-0x-Tvy"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDZ-Jz-wk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="1135"/>
+            <point key="canvasLocation" x="574" y="1151"/>
         </scene>
         <!--Custom Table View View Controller-->
         <scene sceneID="FKi-YT-lEF">
@@ -373,7 +375,6 @@
         <!--Custom Table View View Controller-->
         <scene sceneID="8u6-R2-DHu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6pq-Lt-Li5" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="htf-1h-3A3" customClass="CustomTableViewViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="22" sectionFooterHeight="22" id="uNG-TL-tNF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -443,6 +444,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wys-Qh-W2L"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6pq-Lt-Li5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1081" y="1143"/>
         </scene>
@@ -798,8 +800,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Potato.jpg" width="259" height="194"/>
-        <image name="Potato.jpg" width="259" height="194"/>
         <image name="Potato.jpg" width="259" height="194"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

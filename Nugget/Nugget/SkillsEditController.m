@@ -41,7 +41,6 @@
     [skillset addObject:@"Skill5"];
     
     self.title = @"Skills";
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertSkill)];
 
     self.navigationItem.rightBarButtonItem = addButton;
