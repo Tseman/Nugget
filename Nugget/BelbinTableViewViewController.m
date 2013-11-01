@@ -4,7 +4,7 @@
 //
 //  Created by Alexis Katigbak on 2013-10-22.
 //  Copyright (c) 2013 Alexis Katigbak. All rights reserved.
-//
+// custom table view controller allows reordering of belbin skills
 
 #import "BelbinTableViewViewController.h"
 
@@ -25,14 +25,7 @@
 
 - (void)viewDidLoad
 {
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
+    //static names for belbin roles
     belbinroles = [[NSMutableArray alloc] init];
     [belbinroles addObject:@"Plant"];
     [belbinroles addObject:@"Resource Investigator"];
@@ -42,12 +35,14 @@
     [belbinroles addObject:@"Team Worker"];
     [belbinroles addObject:@"Implementor"];
     
+    //create edit button in navigation bar
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
 	[self.navigationItem setRightBarButtonItem:addButton];
     [super viewDidLoad];
 }
 
 - (IBAction) EditTable:(id)sender{
+    //allow editing table
 	if(self.editing)
 	{
 		[super setEditing:NO animated:NO];
@@ -81,7 +76,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Retuen the number of sections.
+    // Return the number of sections.
     return 1;
 }
 
@@ -117,20 +112,6 @@
     return YES;
 }
 
-/*
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleNone;
@@ -139,7 +120,7 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 
-    
+    //rearrange belbin roles in the UI. currently doesnt save the result in the belbin array
     NSObject *item = [belbinroles objectAtIndex:fromIndexPath.row];
 	[belbinroles removeObject:item];
 	[belbinroles insertObject:item atIndex:toIndexPath.row];
@@ -155,17 +136,5 @@
     return YES;
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

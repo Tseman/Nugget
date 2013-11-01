@@ -4,7 +4,7 @@
 //
 //  Created by Alexis Katigbak on 2013-10-30.
 //  Copyright (c) 2013 Alexis Katigbak. All rights reserved.
-//
+//custom table view controller allows add and delete for skills
 
 #import "SkillsEditController.h"
 
@@ -27,11 +27,7 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   //pull out skills data here. temporarily set to array of static values
     
     skillset = [[NSMutableArray alloc] init];
     [skillset addObject:@"Skill1"];
@@ -106,6 +102,7 @@
 
 - (void) insertSkill
 {
+    //insert skill by creating an alert view for user input
     UIAlertView *addAlert = [[UIAlertView alloc] initWithTitle:@"Enter new skill" message:@""delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
     addAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
     addAlert.show;
@@ -121,6 +118,7 @@
     }
     else if (buttonIndex == 1)
     {
+        //add to array and table view once the okay has been cleared in the alert
         NSString *temp = [alertView textFieldAtIndex:0].text;
         if(!skillset)
         {
