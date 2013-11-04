@@ -48,6 +48,7 @@
 		42B2251018243AF400C990F3 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B224FE18243AF400C990F3 /* AFURLResponseSerialization.m */; };
 		42B2251118243AF400C990F3 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B2250018243AF400C990F3 /* AFURLSessionManager.m */; };
 		42B2251218243AF400C990F3 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B2250018243AF400C990F3 /* AFURLSessionManager.m */; };
+		42B225151826E65F00C990F3 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B225141826E65F00C990F3 /* ProfileController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		42B224FE18243AF400C990F3 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		42B224FF18243AF400C990F3 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		42B2250018243AF400C990F3 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		42B225131826E65F00C990F3 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
+		42B225141826E65F00C990F3 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */,
+				42B225131826E65F00C990F3 /* ProfileController.h */,
+				42B225141826E65F00C990F3 /* ProfileController.m */,
 				420A4CD6182183BF00080821 /* Potato.jpg */,
 				420A4CD018217A2A00080821 /* ContactCell.h */,
 				420A4CD118217A2A00080821 /* ContactCell.m */,
@@ -357,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B2250B18243AF400C990F3 /* AFURLConnectionOperation.m in Sources */,
+				42B225151826E65F00C990F3 /* ProfileController.m in Sources */,
 				420A4CD218217A2A00080821 /* ContactCell.m in Sources */,
 				42B2250918243AF400C990F3 /* AFSecurityPolicy.m in Sources */,
 				4239F88E181719B700D249DF /* BelbinTableViewViewController.m in Sources */,

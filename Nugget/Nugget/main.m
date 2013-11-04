@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "AppDelegate.h"
+int currentUserID;
 
 int main(int argc, char * argv[])
 {
+    currentUserID = 10001;
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

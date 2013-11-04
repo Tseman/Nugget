@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="-419" y="-224"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Controller-->
         <scene sceneID="hwA-sO-mkH">
             <objects>
-                <viewController id="SDm-MT-KMk" sceneMemberID="viewController">
+                <viewController id="SDm-MT-KMk" customClass="ProfileController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BOt-A5-Ruy"/>
                         <viewControllerLayoutGuide type="bottom" id="mFi-RS-WSl"/>
@@ -178,6 +178,11 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" id="dm6-Ol-yp8"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="WJw-FG-Qh2" id="OQX-Tj-ng2"/>
+                        <outlet property="skill1RatingLabel" destination="2Lb-Tq-X8V" id="vBU-Xl-sDR"/>
+                        <outlet property="topBelbinLabel" destination="Dgp-NY-HdK" id="Ooe-i5-V5x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05S-u6-NOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
