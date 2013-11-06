@@ -43,7 +43,7 @@ extern int currentUserID;
       parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSLog(@"%@", responseObject);
-             //how do i get the specific fields on a response object to tie in with the UI? 
+             //cast into NSdictionary and use the key 
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

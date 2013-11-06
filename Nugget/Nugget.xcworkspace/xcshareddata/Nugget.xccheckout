@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>60FA9C24-04F7-4216-97F1-DBACD8C3463D</string>
+	<string>0C44964B-42A5-4327-9947-9D1853832362</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Nugget</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -17,10 +17,10 @@
 	<string>Nugget/Nugget.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>03D4264D-E68D-4091-92B6-8D8B5E849705</key>
-		<string>../../../../Downloads/PickerView</string>
 		<key>11A32F02-60CD-4E21-8469-2B48EE3FDC67</key>
 		<string>../..</string>
+		<key>C2665F55-3A1E-45B9-B3DD-5577B83AB3BA</key>
+		<string>../../../../Downloads/PickerView</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/akatigbak/Nugget.git</string>
@@ -42,7 +42,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>03D4264D-E68D-4091-92B6-8D8B5E849705</string>
+			<string>C2665F55-3A1E-45B9-B3DD-5577B83AB3BA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>PickerView</string>
 		</dict>

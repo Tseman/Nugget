@@ -40,6 +40,7 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertSkill)];
 
     self.navigationItem.rightBarButtonItem = addButton;
+
 }
 
 - (void) setEditing:(BOOL)editing animated:(BOOL)animated
