@@ -109,13 +109,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="153" translatesAutoresizingMaskIntoConstraints="NO" id="qjJ-VX-mEa">
-                                <rect key="frame" x="147" y="72" width="153" height="36"/>
+                                <rect key="frame" x="142" y="72" width="153" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJw-FG-Qh2">
-                                <rect key="frame" x="147" y="116" width="41" height="21"/>
+                                <rect key="frame" x="142" y="127" width="158" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -180,7 +180,8 @@
                     <navigationItem key="navigationItem" title="Edit Profile" id="dm6-Ol-yp8"/>
                     <connections>
                         <outlet property="emailLabel" destination="WJw-FG-Qh2" id="OQX-Tj-ng2"/>
-                        <outlet property="skill1RatingLabel" destination="2Lb-Tq-X8V" id="vBU-Xl-sDR"/>
+                        <outlet property="nameLabel" destination="qjJ-VX-mEa" id="5Kr-Bv-hew"/>
+                        <outlet property="skill1RatingLabel" destination="2Lb-Tq-X8V" id="SjG-5u-51Y"/>
                         <outlet property="topBelbinLabel" destination="Dgp-NY-HdK" id="Ooe-i5-V5x"/>
                     </connections>
                 </viewController>

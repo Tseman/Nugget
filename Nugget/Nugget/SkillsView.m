@@ -9,19 +9,18 @@
 
 #import "SkillsView.h"
 #import "SkillCell.h"
+#import "AFNetworking.h"
 
 @implementation SkillsView
+
+
+extern int currentUserID;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     skills = [[NSMutableArray alloc] init];
     [skills addObject:@"Skill1"];
-    [skills addObject:@"Skill2"];
-    [skills addObject:@"Skill3"];
-    [skills addObject:@"Skill4"];
-    [skills addObject:@"Skill5"];
-    
 
     
     

@@ -7,6 +7,8 @@
 // custom table view controller allows reordering of belbin skills
 
 #import "BelbinTableViewViewController.h"
+#import "AFNetworking.h"
+extern int currentUserID;
 
 @interface BelbinTableViewViewController ()
 
@@ -25,20 +27,59 @@
 
 - (void)viewDidLoad
 {
-    //static names for belbin roles
-    belbinroles = [[NSMutableArray alloc] init];
-    [belbinroles addObject:@"Plant"];
-    [belbinroles addObject:@"Resource Investigator"];
-    [belbinroles addObject:@"Coordinator"];
-    [belbinroles addObject:@"Shaper"];
-    [belbinroles addObject:@"Monitor"];
-    [belbinroles addObject:@"Team Worker"];
-    [belbinroles addObject:@"Implementor"];
+    [super viewDidLoad];
+
+
+    NSMutableArray *belbinlist = [[NSMutableArray alloc] initWithObjects:@"PLANT", @"RESOURCE INVESTIGATOR", @"MONITOR EVALUATOR", @"COORDINATOR", @"IMPLEMENTER", @"COMPLETER FINISHER", @"TEAMWORKER", @"SHARPER", @"SPECIALIST", nil];
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", nil];
+    //sending request to php layer
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getprofile.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             //NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             //NSLog (@"ARR %@", jsonDict);
+             NSDictionary *dictzero = [jsonDict objectAtIndex:0];
+             
+             belbinroles = [[NSMutableArray alloc] init];
+             [belbinlist removeObject: [dictzero objectForKey:@"Most_unsuitable_Brole"]];
+             [belbinlist removeObject: [dictzero objectForKey:@"Secondary_unsuitable_Brole"]];
+             [belbinlist removeObject: [dictzero objectForKey:@"Third_unsuitable_Brole"]];
+             [belbinlist removeObject: [dictzero objectForKey:@"Most_suitable_Brole"]];
+             [belbinlist removeObject: [dictzero objectForKey:@"Secondary_suitable_Brole"]];
+             [belbinlist removeObject: [dictzero objectForKey:@"Third_suitable_Brole"]];
+
+             
+             [belbinroles addObject:[dictzero objectForKey:@"Most_suitable_Brole"]];
+             [belbinroles addObject:[dictzero objectForKey:@"Secondary_suitable_Brole"]];
+             [belbinroles addObject:[dictzero objectForKey:@"Third_suitable_Brole"]];
+            //compare against array
+             for(int x = 0; x<[belbinlist count]; x++)
+             {
+                 [belbinroles addObject:[belbinlist objectAtIndex:x]];
+             }
+             [belbinroles addObject:[dictzero objectForKey:@"Third_unsuitable_Brole"]];
+             [belbinroles addObject:[dictzero objectForKey:@"Secondary_unsuitable_Brole"]];
+             [belbinroles addObject:[dictzero objectForKey:@"Most_unsuitable_Brole"]];
+             
+             
+            //NSLog(@"%@", [belbinroles objectAtIndex:0]);
+             
+             [self.tableView reloadData];
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+
     
     //create edit button in navigation bar
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
 	[self.navigationItem setRightBarButtonItem:addButton];
-    [super viewDidLoad];
+
 }
 
 - (IBAction) EditTable:(id)sender{
@@ -83,7 +124,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 7;
+    return [belbinroles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,7 +136,6 @@
     if (cell ==nil){
         cell = [[UITableViewCell alloc ]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-
     
 	cell.textLabel.text = [belbinroles objectAtIndex:indexPath.row];
     return cell;
@@ -120,10 +160,31 @@
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 
-    //rearrange belbin roles in the UI. currently doesnt save the result in the belbin array
+    //rearrange belbin roles in the UI.
     NSObject *item = [belbinroles objectAtIndex:fromIndexPath.row];
 	[belbinroles removeObject:item];
 	[belbinroles insertObject:item atIndex:toIndexPath.row];
+    
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID",[belbinroles objectAtIndex:0], @"mostsuitable", [belbinroles objectAtIndex:1], @"secondsuitable", [belbinroles objectAtIndex:2], @"thirdsuitable", [belbinroles objectAtIndex:8], @"mostunsuitable", [belbinroles objectAtIndex:7], @"secondunsuitable", [belbinroles objectAtIndex:6], @"thirdunsuitable",nil];
+    for (id key in [parameters allKeys]){
+        id obj = [parameters objectForKey: key];
+        NSLog(@"%@", obj);
+    }
+    
+    //sending request to php layer
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/updatebelbin.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+           // NSLog(@"%@", responseObject);
+           //   [self.tableView reloadData];
+                     }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:                                                     [NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+
 
 
 

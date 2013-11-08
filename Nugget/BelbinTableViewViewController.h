@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface BelbinTableViewViewController : UITableViewController {
-    NSMutableArray *belbinroles;
     IBOutlet UITableView *tblSimpleTable;
+    NSMutableArray *belbinroles;
 
 }
 - (IBAction) EditTable:(id)sender;

@@ -14,6 +14,7 @@
 @end
 
 @implementation CustomTableViewViewController
+@synthesize skillRatingLabel = _skillRatingLabel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

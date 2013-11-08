@@ -7,6 +7,8 @@
 //custom table view controller allows add and delete for skills
 
 #import "SkillsEditController.h"
+#import "AFNetworking.h"
+extern int currentUserID;
 
 @interface SkillsEditController ()
 
@@ -27,14 +29,33 @@
 {
     [super viewDidLoad];
 
-   //pull out skills data here. temporarily set to array of static values
+   //pull out skills data here
     
     skillset = [[NSMutableArray alloc] init];
-    [skillset addObject:@"Skill1"];
-    [skillset addObject:@"Skill2"];
-    [skillset addObject:@"Skill3"];
-    [skillset addObject:@"Skill4"];
-    [skillset addObject:@"Skill5"];
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", nil];
+    //sending request to php layer
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getskills.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             for (int i = 0; i < [jsonDict count]; i++)
+             {
+                 NSDictionary *dictzero = [jsonDict objectAtIndex:i];
+                 [skillset addObject:[dictzero objectForKey:@"Expertise_Name"]];
+             }
+             //NSLog(@"%@", skillset);
+             [self.tableView reloadData];
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+    
+
     
     self.title = @"Skills";
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertSkill)];
@@ -93,8 +114,31 @@
 {
     if(editingStyle == UITableViewCellEditingStyleDelete)
     {
+        
+        
+        //remove from members table and endorsements table
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", [skillset objectAtIndex:indexPath.row],@"skillname",nil];
+        for (id key in [parameters allKeys]){
+            id obj = [parameters objectForKey: key];
+            NSLog(@"%@", obj);
+        }
+        
         //remove from array
         [skillset removeObjectAtIndex:indexPath.row];
+        
+        //sending request to php layer
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:[NSString stringWithFormat:@"http://localhost:8888/deleteskill.php?format=json"]
+          parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                //php runs code to delete from members and endorsements table
+                //not sure if we want to delete the endorsements stuff? something to bring up
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [av show];
+             }];
+
         //remove from table view
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -119,6 +163,11 @@
     }
     else if (buttonIndex == 1)
     {
+        if([skillset count] >= 10)
+        {
+            return;
+        }
+        
         //add to array and table view once the okay has been cleared in the alert
         NSString *temp = [alertView textFieldAtIndex:0].text;
         if(!skillset)
@@ -129,6 +178,22 @@
         NSIndexPath *i = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView insertRowsAtIndexPaths:@[i] withRowAnimation:UITableViewRowAnimationAutomatic];
         
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID",temp,@"skillname",nil];
+        
+        //sending request to php layer
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:[NSString stringWithFormat:@"http://localhost:8888/insertskill.php?format=json"]
+          parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 //php runs code to delete from members and endorsements table
+                 //NSLog(@"%@", responseObject);
+                 //not sure if we want to delete the endorsements stuff? something to bring up
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [av show];
+             }];
+
         
     }
 }
