@@ -8,6 +8,7 @@
 
 #import "SkillsEditController.h"
 #import "AFNetworking.h"
+#import "SkillDetail.h"
 extern int currentUserID;
 
 @interface SkillsEditController ()
@@ -24,6 +25,17 @@ extern int currentUserID;
     }
     return self;
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"skilldetail"]) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        SkillDetail *vc = [segue destinationViewController];
+        //NSLog(@"%@", [skillset objectAtIndex:selectedRowIndex.row]);
+        vc.passedval = [skillset objectAtIndex:selectedRowIndex.row];
+    }
+}
+
 
 - (void)viewDidLoad
 {
@@ -185,9 +197,7 @@ extern int currentUserID;
         [manager GET:[NSString stringWithFormat:@"http://localhost:8888/insertskill.php?format=json"]
           parameters:parameters
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                 //php runs code to delete from members and endorsements table
                  //NSLog(@"%@", responseObject);
-                 //not sure if we want to delete the endorsements stuff? something to bring up
              }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                  UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
