@@ -13,8 +13,6 @@
 		420A4CE21821B38C00080821 /* SkillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A4CDF1821B38C00080821 /* SkillCell.m */; };
 		420A4CE31821B38C00080821 /* SkillsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A4CE11821B38C00080821 /* SkillsView.m */; };
 		420A4CE71821D72200080821 /* SkillsEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = 420A4CE61821D72200080821 /* SkillsEditController.m */; };
-		421885B3182CBFBC005A2856 /* SkillDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 421885B2182CBFBC005A2856 /* SkillDetail.m */; };
-		421885B6182CC013005A2856 /* RatersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 421885B5182CC013005A2856 /* RatersView.m */; };
 		4239F88E181719B700D249DF /* BelbinTableViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4239F88D181719B700D249DF /* BelbinTableViewViewController.m */; };
 		42425A221807783D0053F6EB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42425A211807783D0053F6EB /* QuartzCore.framework */; };
 		429AE69E1806548B00801014 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429AE69D1806548B00801014 /* Foundation.framework */; };
@@ -32,6 +30,7 @@
 		429AE77F1807433400801014 /* NuggetStoryBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429AE77E1807433400801014 /* NuggetStoryBoard.storyboard */; };
 		429AE78418075E6600801014 /* PickerVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE78118075E6600801014 /* PickerVIew.m */; };
 		429AE78518075E6600801014 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429AE78318075E6600801014 /* ViewController.m */; };
+		42A5DFC4182EB5780079FCDF /* SkillDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42A5DFC3182EB5780079FCDF /* SkillDetailController.m */; };
 		42B2250118243AF400C990F3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B224EF18243AF400C990F3 /* AFHTTPRequestOperation.m */; };
 		42B2250218243AF400C990F3 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B224EF18243AF400C990F3 /* AFHTTPRequestOperation.m */; };
 		42B2250318243AF400C990F3 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B224F118243AF400C990F3 /* AFHTTPRequestOperationManager.m */; };
@@ -75,10 +74,6 @@
 		420A4CE11821B38C00080821 /* SkillsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillsView.m; sourceTree = "<group>"; };
 		420A4CE51821D72200080821 /* SkillsEditController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillsEditController.h; sourceTree = "<group>"; };
 		420A4CE61821D72200080821 /* SkillsEditController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillsEditController.m; sourceTree = "<group>"; };
-		421885B1182CBFBC005A2856 /* SkillDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillDetail.h; sourceTree = "<group>"; };
-		421885B2182CBFBC005A2856 /* SkillDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillDetail.m; sourceTree = "<group>"; };
-		421885B4182CC013005A2856 /* RatersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatersView.h; sourceTree = "<group>"; };
-		421885B5182CC013005A2856 /* RatersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RatersView.m; sourceTree = "<group>"; };
 		4239F88C181719B700D249DF /* BelbinTableViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BelbinTableViewViewController.h; path = ../BelbinTableViewViewController.h; sourceTree = "<group>"; };
 		4239F88D181719B700D249DF /* BelbinTableViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BelbinTableViewViewController.m; path = ../BelbinTableViewViewController.m; sourceTree = "<group>"; };
 		42425A211807783D0053F6EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -103,6 +98,8 @@
 		429AE78118075E6600801014 /* PickerVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PickerVIew.m; path = ../../../../Downloads/PickerView/PickerView/PickerVIew.m; sourceTree = "<group>"; };
 		429AE78218075E6600801014 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../../../Downloads/PickerView/PickerView/ViewController.h; sourceTree = "<group>"; };
 		429AE78318075E6600801014 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../../../Downloads/PickerView/PickerView/ViewController.m; sourceTree = "<group>"; };
+		42A5DFC2182EB5780079FCDF /* SkillDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkillDetailController.h; sourceTree = "<group>"; };
+		42A5DFC3182EB5780079FCDF /* SkillDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SkillDetailController.m; sourceTree = "<group>"; };
 		42B224EE18243AF400C990F3 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		42B224EF18243AF400C990F3 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		42B224F018243AF400C990F3 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -198,10 +195,8 @@
 				4239F88D181719B700D249DF /* BelbinTableViewViewController.m */,
 				420A4CD31821811000080821 /* CustomTableViewViewController.h */,
 				420A4CD41821811000080821 /* CustomTableViewViewController.m */,
-				421885B1182CBFBC005A2856 /* SkillDetail.h */,
-				421885B2182CBFBC005A2856 /* SkillDetail.m */,
-				421885B4182CC013005A2856 /* RatersView.h */,
-				421885B5182CC013005A2856 /* RatersView.m */,
+				42A5DFC2182EB5780079FCDF /* SkillDetailController.h */,
+				42A5DFC3182EB5780079FCDF /* SkillDetailController.m */,
 				420A4CDE1821B38C00080821 /* SkillCell.h */,
 				420A4CDF1821B38C00080821 /* SkillCell.m */,
 				420A4CE01821B38C00080821 /* SkillsView.h */,
@@ -381,12 +376,11 @@
 				429AE78418075E6600801014 /* PickerVIew.m in Sources */,
 				420A4CE31821B38C00080821 /* SkillsView.m in Sources */,
 				420A4CE71821D72200080821 /* SkillsEditController.m in Sources */,
-				421885B3182CBFBC005A2856 /* SkillDetail.m in Sources */,
 				420A4CD51821811000080821 /* CustomTableViewViewController.m in Sources */,
 				42B2251118243AF400C990F3 /* AFURLSessionManager.m in Sources */,
 				42B2250F18243AF400C990F3 /* AFURLResponseSerialization.m in Sources */,
+				42A5DFC4182EB5780079FCDF /* SkillDetailController.m in Sources */,
 				420A4CE21821B38C00080821 /* SkillCell.m in Sources */,
-				421885B6182CC013005A2856 /* RatersView.m in Sources */,
 				429AE78518075E6600801014 /* ViewController.m in Sources */,
 				42B2250D18243AF400C990F3 /* AFURLRequestSerialization.m in Sources */,
 				42B2250718243AF400C990F3 /* AFNetworkReachabilityManager.m in Sources */,

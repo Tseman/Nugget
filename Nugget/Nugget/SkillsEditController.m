@@ -8,7 +8,7 @@
 
 #import "SkillsEditController.h"
 #import "AFNetworking.h"
-#import "SkillDetail.h"
+#import "SkillDetailController.h"
 extern int currentUserID;
 
 @interface SkillsEditController ()
@@ -30,9 +30,10 @@ extern int currentUserID;
 
     if ([segue.identifier isEqualToString:@"skilldetail"]) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
-        SkillDetail *vc = [segue destinationViewController];
+        SkillDetailController *vc = [segue destinationViewController];
         //NSLog(@"%@", [skillset objectAtIndex:selectedRowIndex.row]);
-        vc.passedval = [skillset objectAtIndex:selectedRowIndex.row];
+        vc.passedval = [[skillset objectAtIndex:selectedRowIndex.row] substringFromIndex:2];
+        //vc.passedval = [skillset objectAtIndex:selectedRowIndex.row];
     }
 }
 
@@ -40,8 +41,17 @@ extern int currentUserID;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"Skills";
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertSkill)];
 
-   //pull out skills data here
+    self.navigationItem.rightBarButtonItem = addButton;
+
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    //pull out skills data here
     
     skillset = [[NSMutableArray alloc] init];
     
@@ -56,7 +66,7 @@ extern int currentUserID;
              for (int i = 0; i < [jsonDict count]; i++)
              {
                  NSDictionary *dictzero = [jsonDict objectAtIndex:i];
-                 [skillset addObject:[dictzero objectForKey:@"Expertise_Name"]];
+                 [skillset addObject:[NSString stringWithFormat:@"%@ %@",[dictzero objectForKey:@"Expertise_rating"], [dictzero objectForKey:@"Expertise_Name"]]];
              }
              //NSLog(@"%@", skillset);
              [self.tableView reloadData];
@@ -67,13 +77,6 @@ extern int currentUserID;
              [av show];
          }];
     
-
-    
-    self.title = @"Skills";
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertSkill)];
-
-    self.navigationItem.rightBarButtonItem = addButton;
-
 }
 
 - (void) setEditing:(BOOL)editing animated:(BOOL)animated
@@ -129,7 +132,7 @@ extern int currentUserID;
         
         
         //remove from members table and endorsements table
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", [skillset objectAtIndex:indexPath.row],@"skillname",nil];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", [[skillset objectAtIndex:indexPath.row] substringFromIndex:2],@"skillname",nil];
         for (id key in [parameters allKeys]){
             id obj = [parameters objectForKey: key];
             NSLog(@"%@", obj);
