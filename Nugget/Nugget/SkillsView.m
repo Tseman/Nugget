@@ -114,17 +114,32 @@ extern int currentUserID;
     
     cell.skillLabel.text = [skills objectAtIndex:indexPath.row];
     
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[skills objectAtIndex:indexPath.row],@"skillname", _memberID, @"currentID", nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[skills objectAtIndex:indexPath.row],@"skillname", [NSString stringWithFormat:@"%i", currentUserID], @"rater", _memberID, @"ratee",nil];
+    
+   // for (id key in [parameters allKeys]){
+ //       id obj = [parameters objectForKey: key];
+  //      NSLog(@"%@", obj);
+   // }
+
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getrating.php?format=json"]
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getendorsementrating.php?format=json"]
       parameters:parameters
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSLog(@"%@", responseObject);
              NSArray *jsonDict = (NSArray *) responseObject;
-             NSDictionary *dictzero = [jsonDict objectAtIndex:0];
-             cell.rating.value = [[dictzero objectForKey:@"Expertise_Rating"] floatValue];
-             cell.resultLabel.text = [dictzero objectForKey:@"Expertise_Rating"];
+             if([jsonDict count] > 0)
+             {
+                 NSDictionary *dictzero = [jsonDict objectAtIndex:0];
+                 cell.rating.value = [[dictzero objectForKey:@"Expertise_Rating"] floatValue];
+                 cell.resultLabel.text = [dictzero objectForKey:@"Expertise_Rating"];
+             }
+             else
+             {
+                 cell.rating.value = 0;
+                 cell.resultLabel.text = @"0";
+             }
+             
 
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -143,10 +158,37 @@ extern int currentUserID;
 {
     //saves endorsement here
     //for each skill in [skills]...search in endorsements and update member_skills table
+    for (SkillCell *skillc in skillsTableView.visibleCells) {
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID], @"rater", _memberID, @"ratee", skillc.skillLabel.text,@"skillname", [NSString stringWithFormat:@"%.0f", skillc.rating.value], @"rating", nil];
+        
+        //delete and create new entry
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:[NSString stringWithFormat:@"http://localhost:8888/deleteendorsement.php?format=json"]
+          parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [av show];
+             }];
+        
+
+        if (skillc.rating.value > 0)
+        {
+        [manager GET:[NSString stringWithFormat:@"http://localhost:8888/insertendorsement.php?format=json"]
+          parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [av show];
+             }];
+
+        }
+
+        
+    }
     
-    //if value = 0 delete from endorsements table
-    //if value > 0 and exists then use update
-    //if value < 0 and dne then create new entry
     
     //calculate member_skills - overall expertise rating here
 }
