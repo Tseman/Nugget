@@ -114,6 +114,24 @@ extern int currentUserID;
     
     cell.skillLabel.text = [skills objectAtIndex:indexPath.row];
     
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[skills objectAtIndex:indexPath.row],@"skillname", _memberID, @"currentID", nil];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getrating.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             NSDictionary *dictzero = [jsonDict objectAtIndex:0];
+             cell.rating.value = [[dictzero objectForKey:@"Expertise_Rating"] floatValue];
+             cell.resultLabel.text = [dictzero objectForKey:@"Expertise_Rating"];
+
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+
 
     
     return cell;
@@ -130,6 +148,7 @@ extern int currentUserID;
     //if value > 0 and exists then use update
     //if value < 0 and dne then create new entry
     
+    //calculate member_skills - overall expertise rating here
 }
 
 

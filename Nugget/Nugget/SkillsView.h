@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *email;
 @property (weak, nonatomic) IBOutlet UILabel *topbelbin;
 @property (nonatomic, copy) NSString *cname;
-@property (weak, nonatomic) NSString *memberID;
+@property (strong, nonatomic) NSString *memberID;
 - (IBAction)Save:(id)sender;
 
 @end

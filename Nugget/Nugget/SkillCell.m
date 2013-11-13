@@ -16,10 +16,7 @@
     if (self) {
         // Initialization code
         _rating.continuous = NO;
-        [_rating addTarget:self
-                   action:@selector(Scroll:)
-         forControlEvents:UIControlEventValueChanged];
-    }
+        }
     return self;
 }
 

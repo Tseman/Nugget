@@ -12,9 +12,9 @@
 {
     
 }
-@property (nonatomic, weak) IBOutlet UILabel *skillLabel;
-@property (nonatomic, weak) IBOutlet UILabel *resultLabel;
-@property (nonatomic, weak) IBOutlet UISlider *rating;
+@property (nonatomic, strong) IBOutlet UILabel *skillLabel;
+@property (nonatomic, strong) IBOutlet UILabel *resultLabel;
+@property (nonatomic, strong) IBOutlet UISlider *rating;
 - (IBAction)Scroll:(id)sender;
 
 
