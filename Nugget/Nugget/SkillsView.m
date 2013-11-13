@@ -159,7 +159,7 @@ extern int currentUserID;
     //saves endorsement here
     //for each skill in [skills]...search in endorsements and update member_skills table
     for (SkillCell *skillc in skillsTableView.visibleCells) {
-        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID], @"rater", _memberID, @"ratee", skillc.skillLabel.text,@"skillname", [NSString stringWithFormat:@"%.0f", skillc.rating.value], @"rating", nil];
+        NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID], @"rater", _memberID, @"ratee", skillc.skillLabel.text,@"skillname", skillc.resultLabel.text, @"rating", nil];
         
         //delete and create new entry
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -172,9 +172,6 @@ extern int currentUserID;
                  [av show];
              }];
         
-
-        if (skillc.rating.value > 0)
-        {
         [manager GET:[NSString stringWithFormat:@"http://localhost:8888/insertendorsement.php?format=json"]
           parameters:parameters
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -184,14 +181,27 @@ extern int currentUserID;
                  [av show];
              }];
 
-        }
+        
+        
+        //calculate member_skills - overall expertise rating here
+        [manager GET:[NSString stringWithFormat:@"http://localhost:8888/calculaterating.php?format=json"]
+          parameters:parameters
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                 [av show];
+             }];
+
 
         
     }
     
     
-    //calculate member_skills - overall expertise rating here
+    
 }
+
+
 
 
 
