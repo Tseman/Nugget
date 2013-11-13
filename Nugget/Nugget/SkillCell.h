@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface SkillCell : UITableViewCell
-    @property (nonatomic, weak) IBOutlet UILabel *skillLabel;
-    @property (nonatomic, weak) IBOutlet UILabel *resultLabel;
-    @property (nonatomic, weak) IBOutlet UISlider *rating;
+{
+    
+}
+@property (nonatomic, weak) IBOutlet UILabel *skillLabel;
+@property (nonatomic, weak) IBOutlet UILabel *resultLabel;
+@property (nonatomic, weak) IBOutlet UISlider *rating;
+- (IBAction)Scroll:(id)sender;
 
 
 @end

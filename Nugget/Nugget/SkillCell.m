@@ -15,6 +15,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        _rating.continuous = NO;
+        [_rating addTarget:self
+                   action:@selector(Scroll:)
+         forControlEvents:UIControlEventValueChanged];
     }
     return self;
 }
@@ -24,6 +28,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)Scroll:(id)sender {
+    _resultLabel.text = [NSString stringWithFormat:@"%.0f", _rating.value];
 }
 
 @end

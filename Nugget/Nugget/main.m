@@ -13,7 +13,7 @@ int currentUserID;
 
 int main(int argc, char * argv[])
 {
-    currentUserID = 10001;
+    currentUserID = 11111;
     @autoreleasepool {
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }

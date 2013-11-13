@@ -12,6 +12,10 @@
 #import "AFNetworking.h"
 
 @implementation SkillsView
+@synthesize name = _name;
+@synthesize email = _email;
+@synthesize topbelbin = _topbelbin;
+extern int currentUserID;
 
 
 extern int currentUserID;
@@ -19,11 +23,66 @@ extern int currentUserID;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    skills = [[NSMutableArray alloc] init];
-    [skills addObject:@"Skill1"];
+
 
     
     
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    skills = [[NSMutableArray alloc] init];
+    NSArray *names = [_cname componentsSeparatedByString: @" "];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[names objectAtIndex:0],@"first", [names objectAtIndex:1], @"last", nil];
+    
+    
+    //get contact details
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getcontactprofile.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             //NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             //NSLog (@"ARR %@", jsonDict);
+             NSDictionary *dictzero = [jsonDict objectAtIndex:0];
+             _email.text = [dictzero objectForKey:@"Email_address"];
+             _name.text = [NSString stringWithFormat:@"%@ %@",[dictzero objectForKey:@"Given_name"], [dictzero objectForKey:@"Family_name"]];
+             _topbelbin.text = [dictzero objectForKey:@"Most_suitable_Brole"];
+             _memberID = [dictzero objectForKey:@"Member_ID"];
+             
+             
+             //get  contact skills
+             NSDictionary *parameters2 = [NSDictionary dictionaryWithObjectsAndKeys:_memberID, @"currentID", nil];
+             AFHTTPRequestOperationManager *manager2 = [AFHTTPRequestOperationManager manager];
+             [manager2 GET:[NSString stringWithFormat:@"http://localhost:8888/getskills.php?format=json"]
+                parameters:parameters2
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                       NSArray *jsonDict = (NSArray *) responseObject;
+                       for (int i = 0; i < [jsonDict count]; i++)
+                       {
+                           NSDictionary *dictzero = [jsonDict objectAtIndex:i];
+                           [skills addObject:[NSString stringWithFormat:@"%@",[dictzero objectForKey:@"Expertise_Name"]]];
+                       }
+                       [skillsTableView reloadData];
+                       NSLog(@"%@", skills);
+                       
+                   }
+                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                       [av show];
+                   }];
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+    
+    
+
+
+    
+    
+
 }
 
 
@@ -56,12 +115,23 @@ extern int currentUserID;
     }
     
     cell.skillLabel.text = [skills objectAtIndex:indexPath.row];
-    cell.resultLabel.text = @"Result";
-    cell.rating.value = 3;
+    
+
     
     return cell;
     
     
 }
+
+- (IBAction)Save:(id)sender
+{
+    //saves endorsement here
+    //if value = 0 delete from endorsements table
+    //if value > 0 and exists then use update
+    //if value < 0 and dne then create new entry
+    
+}
+
+
 
 @end

@@ -8,6 +8,9 @@
 
 #import "CustomTableViewViewController.h"
 #import "ContactCell.h"
+#import "SkillsView.h"
+#import "AFNetworking.h"
+extern int currentUserID;
 
 @interface CustomTableViewViewController ()
 
@@ -31,16 +34,77 @@
 
     //query contact here
     
+    
+    
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
     contact = [[NSMutableArray alloc] init];
-    [contact addObject:@"Shruti Kapoor"];
-    [contact addObject:@"Alexis Katigbak"];
-    [contact addObject:@"Allan Tse"];
-    [contact addObject:@"Han Shi"];
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i", currentUserID],@"currentID", nil];
+    
+    //is conneter in database
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getcontact1.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             for (int i = 0; i < [jsonDict count]; i++)
+             {
+                 NSDictionary *dictzero = [jsonDict objectAtIndex:i];
+                 [contact addObject:[NSString stringWithFormat:@"%@ %@",[dictzero objectForKey:@"Given_name"], [dictzero objectForKey:@"Family_name"]]];
+                 
+             }
+             //NSLog(@"%@", contact);
+             [self.tableView reloadData];
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+    
+    //current user is connettee in db
+    [manager GET:[NSString stringWithFormat:@"http://localhost:8888/getcontact2.php?format=json"]
+      parameters:parameters
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"%@", responseObject);
+             NSArray *jsonDict = (NSArray *) responseObject;
+             for (int i = 0; i < [jsonDict count]; i++)
+             {
+                 NSDictionary *dictzero = [jsonDict objectAtIndex:i];
+                 [contact addObject:[NSString stringWithFormat:@"%@ %@",[dictzero objectForKey:@"Given_name"], [dictzero objectForKey:@"Family_name"]]];
+                 
+             }
+             //NSLog(@"%@", contact);
+             [self.tableView reloadData];
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving JSON" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+             [av show];
+         }];
+
+
+    
     
     contactTableView.dataSource = self;
-    contactTableView.delegate = self; 
+    contactTableView.delegate = self;
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
+    if ([segue.identifier isEqualToString:@"endorsecontact"]) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        SkillsView *vc = [segue destinationViewController];
+        //NSLog(@"%@", [skillset objectAtIndex:selectedRowIndex.row]);
+        vc.cname = [contact objectAtIndex:selectedRowIndex.row];
+        //vc.passedval = [skillset objectAtIndex:selectedRowIndex.row];
+    }
 }
 
 - (void)didReceiveMemoryWarning
