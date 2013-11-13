@@ -23,8 +23,6 @@ extern int currentUserID;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
     
     
 }
@@ -126,6 +124,8 @@ extern int currentUserID;
 - (IBAction)Save:(id)sender
 {
     //saves endorsement here
+    //for each skill in [skills]...search in endorsements and update member_skills table
+    
     //if value = 0 delete from endorsements table
     //if value > 0 and exists then use update
     //if value < 0 and dne then create new entry
