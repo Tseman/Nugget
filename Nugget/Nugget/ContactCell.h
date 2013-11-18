@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ContactCell : UITableViewCell
-@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *skillLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *thumbnailImageView;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *skillLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *thumbnailImageView;
 
 @end

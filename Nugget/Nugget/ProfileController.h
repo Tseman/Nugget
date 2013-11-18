@@ -10,9 +10,9 @@
 
 @interface ProfileController : UIViewController <UITextFieldDelegate>
 {}
-@property (nonatomic, weak) IBOutlet UILabel *nameLabel;
-@property (nonatomic, weak) IBOutlet UILabel *emailLabel;
-@property (nonatomic, weak) IBOutlet UILabel *skill1RatingLabel;
-@property (nonatomic, weak) IBOutlet UILabel *topBelbinLabel;
+@property (nonatomic, strong) IBOutlet UILabel *nameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *emailLabel;
+@property (nonatomic, strong) IBOutlet UILabel *skill1RatingLabel;
+@property (nonatomic, strong) IBOutlet UILabel *topBelbinLabel;
 @end
 

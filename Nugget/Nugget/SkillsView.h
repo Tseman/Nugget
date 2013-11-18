@@ -14,9 +14,9 @@
     NSMutableArray *skills;
     IBOutlet UITableView *skillsTableView;
 }
-@property (weak, nonatomic) IBOutlet UILabel *name;
-@property (weak, nonatomic) IBOutlet UILabel *email;
-@property (weak, nonatomic) IBOutlet UILabel *topbelbin;
+@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (strong, nonatomic) IBOutlet UILabel *email;
+@property (strong, nonatomic) IBOutlet UILabel *topbelbin;
 @property (nonatomic, copy) NSString *cname;
 @property (strong, nonatomic) NSString *memberID;
 - (IBAction)Save:(id)sender;

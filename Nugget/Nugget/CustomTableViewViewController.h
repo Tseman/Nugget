@@ -14,5 +14,5 @@
 
     IBOutlet UITableView *contactTableView;
 }
-@property (nonatomic, weak) IBOutlet UILabel *skillRatingLabel;
+@property (nonatomic, strong) IBOutlet UILabel *skillRatingLabel;
 @end

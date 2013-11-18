@@ -19,7 +19,7 @@
     
     NSMutableArray *arrayBelbin;
 }
-@property (weak, nonatomic) IBOutlet UITextField *textBox;
+@property (strong, nonatomic) IBOutlet UITextField *textBox;
 @property (strong, nonatomic) IBOutlet UIView *pickerViewContainer;
 
 
