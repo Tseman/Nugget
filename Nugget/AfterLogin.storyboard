@@ -499,7 +499,7 @@
                         <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="SEv-jh-GlC">
-                            <rect key="frame" x="0.0" y="166" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="102" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRk-SI-llZ">
@@ -520,7 +520,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="PpN-nh-vH0" customClass="ContactCell">
-                                <rect key="frame" x="0.0" y="86" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PpN-nh-vH0" id="Uta-EF-CRb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
@@ -618,10 +618,23 @@
                         <viewControllerLayoutGuide type="top" id="NM3-DC-YWB"/>
                         <viewControllerLayoutGuide type="bottom" id="6Ly-In-vQH"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pQU-3X-zc3">
+                    <view key="view" contentMode="scaleToFill" id="pQU-3X-zc3" customClass="CreateProject">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uAm-ED-km9">
+                                <rect key="frame" x="62" y="342" width="196" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Get Team Results">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="getTeam:" destination="pQU-3X-zc3" eventType="touchUpInside" id="vhp-gb-K3m"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Project Title" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cc-IA-zle">
                                 <rect key="frame" x="20" y="96" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -710,16 +723,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <outlet property="expertises" destination="v1O-u0-HpS" id="L2m-aF-7Mq"/>
+                            <outlet property="leaderrole" destination="kd0-Er-oeY" id="evi-vv-dac"/>
+                            <outlet property="pleader" destination="sRh-c5-R8G" id="eg5-hv-JxZ"/>
+                            <outlet property="psize" destination="mlu-iH-x2K" id="oSI-3a-PKj"/>
+                            <outlet property="ptitle" destination="4cc-IA-zle" id="ZOR-Uv-rJ8"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Create a New Project" id="iKB-1O-2g8">
-                        <barButtonItem key="rightBarButtonItem" title="Go" id="90e-LM-vY1">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="y0Z-XA-S3c" kind="push" id="327-K2-Nk7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Create a New Project" id="iKB-1O-2g8"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BelbinPicker" destination="Ajn-ba-nQ9" id="ADZ-hx-lyS"/>
@@ -795,7 +808,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Potato.jpg" width="259" height="194"/>
         <image name="Potato.jpg" width="259" height="194"/>
     </resources>
     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
